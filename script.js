@@ -255,3 +255,32 @@ setTimeout(() => {
     document.body.classList.add("loaded");
 
 }, 100);
+// SERVICE ENQUIRY → WHATSAPP
+
+const enquiryForm = document.getElementById("enquiryForm");
+
+if (enquiryForm) {
+    enquiryForm.addEventListener("submit", function (e) {
+
+        e.preventDefault();
+
+        const name = document.getElementById("name").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+        const service = document.getElementById("service").value;
+        const message = document.getElementById("message").value.trim();
+
+        const whatsappMessage =
+`Hello Smart e-Sevai Online 👋
+
+Name: ${name}
+Mobile: ${phone}
+Service: ${service}
+Message: ${message || "No additional message"}`;
+
+        const whatsappURL =
+            "https://api.whatsapp.com/send?phone=917358233712&text=" +
+            encodeURIComponent(whatsappMessage);
+
+        window.open(whatsappURL, "_blank");
+    });
+}
